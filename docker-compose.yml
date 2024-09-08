@@ -1,0 +1,21 @@
+services:
+ mysql-db:
+  image: mysql:9.0
+  ports:
+   - 3306:3306
+  environment:
+   - MYSQL_ROOT_PASSWORD=supersecret
+  volumes:
+   - db-data:/var/lib/mysql
+
+ cash-money-app:
+  build: .
+  ports:
+   - 3000:3000
+  volumes:
+   - ./cash-money-app/:/home/cash-money-app/
+  command: /bin/bash -c "npm install && npm run dev"
+
+volumes:
+ db-data:
+  driver: local
