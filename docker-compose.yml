@@ -14,7 +14,7 @@ services:
    - 3000:3000
   volumes:
    - ./cash-money-app/:/home/cash-money-app/
-  command: /bin/bash -c "npm install && npm run dev"
+  command: /bin/bash -c "npm install && npx drizzle-kit push && npm run dev"
 
 volumes:
  db-data:
